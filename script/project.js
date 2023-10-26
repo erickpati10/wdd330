@@ -53,6 +53,7 @@ async function getMealRecipe(e) {
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`
       );
       const data = await response.json();
+      saveDataToLocalStorage("selectedMeal", data.meals);
       mealRecipeModal(data.meals);
     } catch (error) {
       console.error("Error fetching recipe data: ", error);
